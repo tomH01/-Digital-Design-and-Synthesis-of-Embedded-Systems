@@ -1,0 +1,47 @@
+$date
+    May 18, 2025  18:15:40
+$end
+$comment
+	SimVision SST: 4c533407f939851cb844a6d0dba1b3d2
+$end
+$version
+    TOOL:	xmsim(64)	22.09-s007
+$end
+$timescale
+    1 fs
+$end
+
+$scope module tb_xor_block $end
+$var parameter 32 !    n $end
+$var reg      16 "    chunk [15:0] $end
+$var reg      16 #    key [15:0] $end
+$var reg      16 $    result [15:0] $end
+
+$scope module uut $end
+$var parameter 32 %    n $end
+$var wire     16 &    chunk [15:0] $end
+$var wire     16 '    key [15:0] $end
+$var reg      16 (    result [15:0] $end
+$upscope $end
+
+$upscope $end
+
+$enddefinitions $end
+$dumpvars
+b10 %
+b10 !
+b110011001100101 "
+b100100001101000 #
+b10111000001101 $
+b110011001100101 &
+b100100001101000 '
+b10111000001101 (
+$end
+#10000
+b110000101100010 "
+b110000101100010 #
+b110000101100010 '
+b110000101100010 &
+b0 (
+b0 $
+#20000

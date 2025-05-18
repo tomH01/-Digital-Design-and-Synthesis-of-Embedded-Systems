@@ -12,6 +12,8 @@ module tb_xor_block;
     );
 
     initial begin 
+        $dumpfile("xor_block.vcd");
+        $dumpvars(0, uut);
         // test case 1
         chunk = {"f", "e"};
         key = {"H", "h"};   
