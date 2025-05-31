@@ -19,9 +19,15 @@ module alu (
   always_comb begin : compute_immediate
     if (((opcode_i == ADD.opcode) & (funct7_i == 'b0000000)) | (opcode_i == ADDI.opcode)) begin
       imm = (value_a_i + value_b_i);
+    end else if ((opcode_i == XOR.opcode) & (funct7_i == 'b0000000)) begin
+      // TODO
+      imm = (value_a_i ^ value_b_i);
     end else if ((opcode_i == MUL.opcode) & (funct7_i == 'b0000001)) begin
       imm = (value_a_i * value_b_i);
-    end else if (opcode_i == BNE.opcode) begin
+    end else if ((opcode_i == BEQ.opcode) & (funct3_i == 'b000)) begin
+      // TODO
+      imm = (value_a_i == value_b_i);
+    end else if ((opcode_i == BNE.opcode) & (funct3_i == 'b001)) begin
       imm = (value_a_i ^ value_b_i);
     end else begin
       imm = 'b0;

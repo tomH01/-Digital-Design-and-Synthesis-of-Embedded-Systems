@@ -10,7 +10,7 @@ module instr_mem (
 
   instr_mem_type_t instr_mem_r;
   initial begin
-    $readmemb("instr.mem", instr_mem_r);
+    $readmemb("test_prog.mem", instr_mem_r);
   end
 
 
