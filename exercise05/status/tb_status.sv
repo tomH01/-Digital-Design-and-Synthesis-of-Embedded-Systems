@@ -12,12 +12,12 @@ module tb_status;
   );
 
   // Clock generation
-  always #(10ns) clk_i = ~clk_i;
+  always #(7.5ns) clk_i = ~clk_i;
 
   initial begin
     rst_ni = 1;
     data_i = 0;
-    #25ns;    // expect RESET
+    #20ns;    // expect RESET
     rst_ni = 0;
 
     // Test cases

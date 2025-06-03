@@ -48,9 +48,9 @@ HLS_FUNC_TOP         :=
 
 # ==== Constraints ====
 # Name of the Clock Port you can define multiple clocks but also have provide their periods.
-CLK_NAME     := clock_slow clock_fast
+CLK_NAME     := clock_slow 
 # Period in time unit TIME_UNIT
-PERIOD       := 15 4
+PERIOD       := 15
 # Name of the Reset Port. Only a single reset port exists.
 RST_NAME     := rst_ni
 # one of [us, ns, ps, fs]
