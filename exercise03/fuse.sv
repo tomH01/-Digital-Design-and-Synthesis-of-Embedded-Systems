@@ -4,5 +4,5 @@ module fuse (
     output logic b
 );
   // TODO
-  assign b = set ? a : 1'b1;
+  assign b = set ? a : 1'bz;
 endmodule

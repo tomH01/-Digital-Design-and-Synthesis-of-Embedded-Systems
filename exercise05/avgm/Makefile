@@ -24,39 +24,37 @@ export MDV_XLM_HOME        := $(shell dirname $(shell dirname $(dir $(XCELIUM_BI
 # ==== Design Files ====
 # --- Design Setup and Simulation related ---
 # List source files here (not the testbench!).
-HDL_SRC             := and.sv
+HDL_SRC             := # TODO
 # Put testbench file here!
-HDL_TB_SRC          := 
+HDL_TB_SRC          := ./tmp_sens.sv ./tb_cdc.sv
 # Top module name for Simulation. If a testbench exits this should be the name of the testbench module.
-HDL_TB_TOP          := and_gate
+HDL_TB_TOP          := tb_cdc
 
 # --- Synthesis and Post-Synthesis related ---
 # Top module name Synthesis.
-HDL_SYN_TOP         := TODO
-# Instance name of the Synthesis top module inside the testbench.
-# For example: module_def # (<params>) i_dut (<port list>) endmodule => i_dut). 
-# Leave this empty if you want to disable timing checks.
-HDL_SYN_TOP_TB_INST := TODO
+HDL_SYN_TOP         := pipeline
+# Instance name of the Synthesis top module inside the testbench (for example: module_def # (<params>) i_dut (<port list>) endmodule => i_dut)
+HDL_SYN_TOP_TB_INST := i_dut
 
 # --- Waveform generation related ---
 # Name of the VCD file which is generated.
-VCD_FN               := and.vcd
+VCD_FN               := cdc.vcd
 
 # --- High-Level-Synthesis related ---
 # Put path to the HLS C/C++ source file
-HLS_SRC              := TODO
+HLS_SRC              :=
 # Top function name HLS.
-HLS_FUNC_TOP         := TODO
+HLS_FUNC_TOP         :=
 
 # ==== Constraints ====
-# Name of the Clock Port
-CLK_NAME     := TODO
-# Name of the Reset Port
-RST_NAME     := TODO
-# one of [us, ns, ps, fs]
-TIME_UNIT    := TODO
+# Name of the Clock Port you can define multiple clocks but also have provide their periods.
+CLK_NAME     := clock_slow clock_fast
 # Period in time unit TIME_UNIT
-PERIOD       := TODO
+PERIOD       := 15 4
+# Name of the Reset Port. Only a single reset port exists.
+RST_NAME     := rst_ni
+# one of [us, ns, ps, fs]
+TIME_UNIT    := ns
 #     ^^^^ CHANGE ^^^^
 
 help:
