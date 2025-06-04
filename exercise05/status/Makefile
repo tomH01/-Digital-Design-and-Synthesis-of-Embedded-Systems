@@ -24,7 +24,7 @@ export MDV_XLM_HOME        := $(shell dirname $(shell dirname $(dir $(XCELIUM_BI
 # ==== Design Files ====
 # --- Design Setup and Simulation related ---
 # List source files here (not the testbench!).
-HDL_SRC             := ./seq_display.sv
+HDL_SRC             := ./seg_display.sv
 # Put testbench file here!
 HDL_TB_SRC          := ./tb_status.sv
 # Top module name for Simulation. If a testbench exits this should be the name of the testbench module.
@@ -32,7 +32,7 @@ HDL_TB_TOP          := tb_status
 
 # --- Synthesis and Post-Synthesis related ---
 # Top module name Synthesis.
-HDL_SYN_TOP         := seq_display
+HDL_SYN_TOP         := seg_display
 # Instance name of the Synthesis top module inside the testbench (for example: module_def # (<params>) i_dut (<port list>) endmodule => i_dut)
 HDL_SYN_TOP_TB_INST := i_dut
 

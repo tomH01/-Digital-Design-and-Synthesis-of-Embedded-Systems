@@ -24,7 +24,9 @@ export MDV_XLM_HOME        := $(shell dirname $(shell dirname $(dir $(XCELIUM_BI
 # ==== Design Files ====
 # --- Design Setup and Simulation related ---
 # List source files here (not the testbench!).
-HDL_SRC             := # TODO
+# Simulation: ./pipeline.sv ../status/seg_display.sv ../avgm/avg.sv
+# Synthesis: ./synthesis/syn_pipeline.v ./synthesis/constraints.sdc
+HDL_SRC             := ./pipeline.sv ../status/seg_display.sv ../avgm/avg.sv ../clock_domain_crossing/n_bit_cdc.sv
 # Put testbench file here!
 HDL_TB_SRC          := ./tmp_sens.sv ./tb_cdc.sv
 # Top module name for Simulation. If a testbench exits this should be the name of the testbench module.

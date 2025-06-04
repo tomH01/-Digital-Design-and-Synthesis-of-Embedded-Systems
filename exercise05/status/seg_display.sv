@@ -1,8 +1,8 @@
-module seq_display (
+module seg_display (
   input logic clk_i,
   input logic rst_ni,
   input logic [7:0] data_i,
-  output logic [14:0]  fourteen_seg_o
+  output logic [14:0]  fourteen_seg_out
 ); 
   logic signed [7:0] data_signed_i;
 
@@ -26,20 +26,20 @@ module seq_display (
 
   state_t current_state, next_state;
 
-  always_ff @(posedge clk_i or posedge rst_ni) begin
-    if (rst_ni) begin
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
       current_state <= S_RESET;
-      fourteen_seg_o <= CHAR_R;
+      fourteen_seg_out <= CHAR_R;
     end else begin
       current_state <= next_state;
 
       unique case (next_state)
-        S_OKAY:     fourteen_seg_o <= CHAR_O;
-        S_WARM:     fourteen_seg_o <= CHAR_W;
-        S_WARM_DOT: fourteen_seg_o <= CHAR_W_D;
-        S_COLD:     fourteen_seg_o <= CHAR_C;
-        S_COLD_DOT: fourteen_seg_o <= CHAR_C_D;
-        default:    fourteen_seg_o <= CHAR_R;
+        S_OKAY:     fourteen_seg_out <= CHAR_O;
+        S_WARM:     fourteen_seg_out <= CHAR_W;
+        S_WARM_DOT: fourteen_seg_out <= CHAR_W_D;
+        S_COLD:     fourteen_seg_out <= CHAR_C;
+        S_COLD_DOT: fourteen_seg_out <= CHAR_C_D;
+        default:    fourteen_seg_out <= CHAR_R;
       endcase
     end
   end

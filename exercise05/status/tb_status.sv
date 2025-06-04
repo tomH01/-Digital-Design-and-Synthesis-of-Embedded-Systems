@@ -4,21 +4,21 @@ module tb_status;
   logic [7:0] data_i;
   logic [14:0] fourteen_seg_o;
 
-  seq_display i_dut (
+  seg_display i_dut (
       .clk_i(clk_i),
       .rst_ni(rst_ni),
       .data_i(data_i),
-      .fourteen_seg_o(fourteen_seg_o)
+      .fourteen_seg_out(fourteen_seg_o)
   );
 
   // Clock generation
   always #(7.5ns) clk_i = ~clk_i;
 
   initial begin
-    rst_ni = 1;
+    rst_ni = 'b0;
     data_i = 0;
     #20ns;    // expect RESET
-    rst_ni = 0;
+    rst_ni = 'b1;
 
     // Test cases
     @(posedge clk_i); data_i = 10;  // expect OKAY

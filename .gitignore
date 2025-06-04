@@ -1,2 +1,5 @@
 **/sim/
+**/post_sim/
+**/synthesis/
+**/cov_work/
 *.dump

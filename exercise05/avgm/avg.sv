@@ -7,8 +7,8 @@ module avg (
 
   logic signed [7 : 0] val1, val2, val3;
 
-  always_ff @(posedge clk_i or posedge rst_ni) begin
-    if (rst_ni) begin
+  always_ff @(posedge clk_i or negedge rst_ni) begin
+    if (!rst_ni) begin
       val1 <= 0;
       val2 <= 0;
       val3 <= 0;
