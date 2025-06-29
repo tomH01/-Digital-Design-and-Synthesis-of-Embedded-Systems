@@ -3,3 +3,5 @@
 **/synthesis/
 **/cov_work/
 *.dump
+*.zip
+*.pdf
