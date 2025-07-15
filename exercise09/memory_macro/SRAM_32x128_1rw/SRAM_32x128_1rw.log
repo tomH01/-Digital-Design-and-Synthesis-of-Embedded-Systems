@@ -1,0 +1,299 @@
+[openram.globals/init_openram]: Initializing OpenRAM...
+[openram.globals/setup_paths]: OpenRAM source code found in /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/compiler
+[openram.globals/setup_paths]: Temporary files saved in /tmp/openram_schmidpa_2030283_temp/
+[openram.globals/read_config]: Configuration file is /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/../SRAM_32x128_1rw/sram_32x128_1rw.py
+[openram.globals/read_config]: Output saved in /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/
+[openram.globals/install_conda]: Creating conda setup...
+[openram.globals/import_tech]: Tech directory found in /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/technology:/home/schmidpa/Desktop/ESES/09/assets/OpenRAM/technology
+[openram.globals/import_tech]: Adding technology path: /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/technology
+[openram.globals/import_tech]: Adding technology path: /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/technology
+[openram.globals/init_paths]: Creating temp directory: /tmp/openram_schmidpa_2030283_temp/
+[openram.globals/setup_bitcell]: Using bitcell: bitcell_1port
+[openram.characterizer/<module>]: Initializing characterizer...
+[openram.characterizer/<module>]: Analytical model enabled.
+[openram.verify/<module>]: Initializing verify...
+[openram.verify/<module>]: LVS/DRC/PEX disabled.
+[openram.globals/setup_bitcell]: Using bitcell: bitcell_1port
+|==============================================================================|
+|=========                      OpenRAM v1.2.18                       =========|
+|=========                                                            =========|
+|=========               VLSI Design and Automation Lab               =========|
+|=========        Computer Science and Engineering Department         =========|
+|=========            University of California Santa Cruz             =========|
+|=========                                                            =========|
+|=========          Usage help: openram-user-group@ucsc.edu           =========|
+|=========        Development help: openram-dev-group@ucsc.edu        =========|
+|=========                See LICENSE for license info                =========|
+|==============================================================================|
+** Start: 07/03/2023 10:33:23
+Technology: freepdk45
+Total size: 4096 bits
+Word size: 32
+Words: 128
+Banks: 1
+RW ports: 1
+R-only ports: 0
+W-only ports: 0
+DRC/LVS/PEX is only run on the top-level design to save run-time (inline_lvsdrc=True to do inline checking).
+DRC/LVS/PEX is disabled (check_lvsdrc=True to enable).
+Characterization is disabled (using analytical delay models) (analytical_delay=False to simulate).
+Words per row: 4
+Output files are: 
+/home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.lvs
+/home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.sp
+/home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.v
+/home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.lib
+/home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.py
+/home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.html
+/home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.log
+/home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.lef
+/home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.gds
+[openram.sram_config/recompute_sizes]: Recomputing with words per row: 4
+[openram.sram_config/recompute_sizes]: Rows: 32 Cols: 128
+[openram.sram_config/recompute_sizes]: Row addr size: 5 Col addr size: 2 Bank addr size: 7
+[openram.sram_config/compute_sizes]: Set SRAM Words Per Row=4
+[openram.modules.bitcell_base_array/__init__]: Creating SRAM_32x128_1rw_capped_replica_bitcell_array 32 x 128
+[openram.modules.capped_replica_bitcell_array/__init__]: Creating SRAM_32x128_1rw_capped_replica_bitcell_array 32 x 128 rbls: [1, 0] left_rbl: [0] right_rbl: []
+[openram.modules.bitcell_base_array/__init__]: Creating SRAM_32x128_1rw_replica_bitcell_array 32 x 128
+[openram.modules.replica_bitcell_array/__init__]: Creating SRAM_32x128_1rw_replica_bitcell_array 32 x 128 rbls: [1, 0] left_rbl: [0] right_rbl: []
+[openram.modules.bitcell_base_array/__init__]: Creating SRAM_32x128_1rw_bitcell_array 32 x 128
+[openram.modules.bitcell_array/__init__]: Creating SRAM_32x128_1rw_bitcell_array 32 x 128
+[openram.modules.bitcell_base_array/__init__]: Creating SRAM_32x128_1rw_replica_column 33 x 1
+[openram.modules.bitcell_base_array/__init__]: Creating SRAM_32x128_1rw_dummy_array 1 x 128
+[openram.modules.bitcell_base_array/__init__]: Creating SRAM_32x128_1rw_dummy_array_0 1 x 129
+[openram.modules.bitcell_base_array/__init__]: Creating SRAM_32x128_1rw_dummy_array_1 1 x 129
+[openram.modules.bitcell_base_array/__init__]: Creating SRAM_32x128_1rw_dummy_array_2 35 x 1
+[openram.modules.bitcell_base_array/__init__]: Creating SRAM_32x128_1rw_dummy_array_3 35 x 1
+[openram.modules.and2_dec/__init__]: Creating and2_dec and2_dec
+[openram.modules.and3_dec/__init__]: Creating and3_dec and3_dec
+[openram.modules.and4_dec/__init__]: Creating and4_dec and4_dec
+[openram.modules.wordline_driver_array/__init__]: Creating SRAM_32x128_1rw_wordline_driver_array
+[openram.modules.wordline_driver/__init__]: Creating wordline_driver wordline_driver
+[openram.modules.and2_dec/__init__]: Creating and2_dec and2_dec_0
+[openram.modules.precharge_array/__init__]: Creating SRAM_32x128_1rw_precharge_array
+[openram.modules.sense_amp_array/__init__]: Creating SRAM_32x128_1rw_sense_amp_array
+[openram.modules.column_mux_array/__init__]: Creating SRAM_32x128_1rw_column_mux_array
+[openram.modules.write_driver_array/__init__]: Creating SRAM_32x128_1rw_write_driver_array
+[openram.modules.pand2/__init__]: Creating pand2 pand2
+[openram.modules.pdriver/__init__]: creating pdriver pdriver
+[openram.modules.dff_array/__init__]: Creating SRAM_32x128_1rw_row_addr_dff rows=5 cols=1
+[openram.modules.dff_array/__init__]: Creating SRAM_32x128_1rw_col_addr_dff rows=1 cols=2
+[openram.modules.dff_array/__init__]: Creating SRAM_32x128_1rw_data_dff rows=1 cols=32
+[openram.modules.control_logic_base/__init__]: Creating control_logic_rw
+[openram.modules.dff_buf/__init__]: Creating SRAM_32x128_1rw_dff_buf
+[openram.modules.dff_buf_array/__init__]: Creating SRAM_32x128_1rw_dff_buf_array
+[openram.modules.dff_buf/__init__]: Creating SRAM_32x128_1rw_dff_buf_0
+[openram.modules.pand2/__init__]: Creating pand2 pand2_0
+[openram.modules.pdriver/__init__]: creating pdriver pdriver_0
+[openram.modules.pbuf/__init__]: creating pbuf with size of 128
+[openram.modules.pdriver/__init__]: creating pdriver pdriver_1
+[openram.modules.pdriver/__init__]: creating pdriver pdriver_2
+[openram.modules.pand3/__init__]: Creating pand3 pand3
+[openram.modules.pdriver/__init__]: creating pdriver pdriver_3
+[openram.modules.pand3/__init__]: Creating pand3 pand3_0
+[openram.modules.pdriver/__init__]: creating pdriver pdriver_4
+[openram.modules.pdriver/__init__]: creating pdriver pdriver_5
+[openram.modules.delay_chain/__init__]: creating delay chain [4, 4, 4, 4, 4, 4, 4, 4, 4]
+** Submodules: 2.5 seconds
+** Placement: 0.0 seconds
+[openram.router.router_tech/__init__]: Minimum track width: 0.280
+[openram.router.router_tech/__init__]: Minimum track space: 0.140
+[openram.router.router_tech/__init__]: Minimum track wire width: 0.140
+[openram.base.hierarchy_layout/get_bbox]: Size: 131.95 x 68.325 with perimeter margin 0.28
+[openram.base.hierarchy_layout/get_bbox]: Size: 131.95 x 68.325 with perimeter margin 3.08
+[openram.router.router_tech/__init__]: Minimum track width: 0.280
+[openram.router.router_tech/__init__]: Minimum track space: 0.140
+[openram.router.router_tech/__init__]: Minimum track wire width: 0.140
+[openram.router.grid/__init__]: BBOX coords: ll=v[-22.33,-7.985] ur=v[115.78,66.5]
+[openram.router.grid/__init__]: BBOX grids: ll=v3d[-80, -29, 0.0] ur=v3d[414, 237, 0.0]
+**** Retrieving pins: 0.0 seconds
+**** Analyzing pins: 0.0 seconds
+[openram.router.router/find_blockages]: Finding blockages.
+**** Finding blockages: 1.2 seconds
+[openram.router.router/convert_blockages]: Converting blockages.
+**** Converting blockages: 0.1 seconds
+**** Converting pins: 0.1 seconds
+**** Separating adjacent pins: 0.0 seconds
+*** Finding pins and blockages: 14.6 seconds
+[openram.router.signal_escape_router/route_signal]: Escape routing csb0 with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing web0 with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[0] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[1] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[2] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[3] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[4] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[5] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[6] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[7] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[8] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[9] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[10] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[11] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[12] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[13] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[14] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[15] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[16] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[17] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[18] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[19] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[20] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[21] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[22] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[23] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[24] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[25] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[26] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[27] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[28] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[29] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[30] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing din0[31] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing addr0[0] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing addr0[1] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing clk0 with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[31] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[30] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[0] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[1] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[2] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[3] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[4] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[5] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[6] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[7] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[8] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[9] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[10] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[11] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[12] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[13] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[14] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[15] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[16] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[17] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[18] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[19] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[20] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[21] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[22] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[23] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[24] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[25] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[26] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[27] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[28] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing dout0[29] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing addr0[6] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing addr0[2] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing addr0[3] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing addr0[4] with scale 5
+[openram.router.signal_escape_router/route_signal]: Escape routing addr0[5] with scale 5
+*** Maze routing pins: 42.2 seconds
+[openram.router.router_tech/__init__]: Minimum track width: 0.280
+[openram.router.router_tech/__init__]: Minimum track space: 0.140
+[openram.router.router_tech/__init__]: Minimum track wire width: 0.140
+[openram.router.supply_tree_router/route]: Running supply router on vdd and gnd...
+[openram.router.grid/__init__]: BBOX coords: ll=v[-19.53,-5.1850000000000005] ur=v[112.98,63.7]
+[openram.router.grid/__init__]: BBOX grids: ll=v3d[-70, -19, 0.0] ur=v3d[404, 228, 0.0]
+**** Retrieving pins: 0.0 seconds
+**** Analyzing pins: 0.0 seconds
+[openram.router.router/find_blockages]: Finding blockages.
+**** Finding blockages: 1.1 seconds
+[openram.router.router/convert_blockages]: Converting blockages.
+**** Converting blockages: 0.1 seconds
+**** Converting pins: 1.5 seconds
+**** Separating adjacent pins: 2.7 seconds
+*** Finding pins and blockages: 18.9 seconds
+[openram.router.grid/__init__]: BBOX coords: ll=v[-21.07,-6.79] ur=v[114.59,65.31]
+[openram.router.grid/__init__]: BBOX grids: ll=v3d[-75, -24, 0.0] ur=v3d[409, 233, 0.0]
+[openram.router.grid/__init__]: BBOX coords: ll=v[-22.47,-8.19] ur=v[115.99000000000001,66.71000000000001]
+[openram.router.grid/__init__]: BBOX grids: ll=v3d[-80, -29, 0.0] ur=v3d[414, 238, 0.0]
+[openram.router.supply_tree_router/route_pins]: Routing vdd with 30 pins.
+[openram.router.supply_tree_router/route_pins]: 0 supply segments routed, 29 remaining.
+[openram.router.supply_tree_router/route_pins]: 25 supply segments routed, 4 remaining.
+[openram.router.supply_tree_router/route_pins]: Routing gnd with 30 pins.
+[openram.router.supply_tree_router/route_pins]: 0 supply segments routed, 29 remaining.
+[openram.router.supply_tree_router/route_pins]: 25 supply segments routed, 4 remaining.
+*** Maze routing supplies: 88.0 seconds
+** Routing: 257.9 seconds
+** Verification: 0.0 seconds
+** SRAM creation: 260.5 seconds
+SP: Writing to /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.sp
+** Spice writing: 0.3 seconds
+GDS: Writing to /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.gds
+** GDS: 0.3 seconds
+LEF: Writing to /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.lef
+** LEF: 0.0 seconds
+LVS: Writing to /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.lvs.sp
+** LVS writing: 0.1 seconds
+LIB: Characterizing... 
+[openram.characterizer.lib/prepare_tables]: Slews: [0.00125 0.005   0.04   ]
+[openram.characterizer.lib/prepare_tables]: Loads: [0.052275 0.2091   0.8364  ]
+[openram.characterizer.lib/prepare_tables]: self.load_slews : [(0.052275, 0.00125), (0.2091, 0.00125), (0.8364, 0.00125), (0.052275, 0.005), (0.2091, 0.005), (0.8364, 0.005), (0.052275, 0.04), (0.2091, 0.04), (0.8364, 0.04)]
+[openram.characterizer.lib/characterize_corners]: Characterizing corners: [('TT', 1.0, 25), ('TT', 1.1, 25), ('SS', 1.0, 25), ('FF', 1.0, 25)]
+[openram.characterizer.lib/characterize_corners]: Corner: ('TT', 1.0, 25)
+[openram.characterizer.lib/characterize_corners]: Writing to /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw_TT_1p0V_25C.lib
+[openram.characterizer.elmore/analytical_power]: Dynamic Power: 0.7467715272337778 mW
+[openram.characterizer.elmore/analytical_power]: Leakage Power: 0.00438 mW
+[openram.characterizer.elmore/get_lib_values]: Slew, Load, Delay(ns), Slew(ns)
+[openram.characterizer.elmore/get_lib_values]: 0.00125, 0.052275, 0.3223545797838185, 0.000716101171875
+[openram.characterizer.elmore/get_lib_values]: 0.00125, 0.2091, 0.3225751149400685, 0.0007381546875
+[openram.characterizer.elmore/get_lib_values]: 0.00125, 0.8364, 0.32345725556506855, 0.00082636875
+[openram.characterizer.elmore/get_lib_values]: 0.005, 0.052275, 0.3223545797838185, 0.000716101171875
+[openram.characterizer.elmore/get_lib_values]: 0.005, 0.2091, 0.3225751149400685, 0.0007381546875
+[openram.characterizer.elmore/get_lib_values]: 0.005, 0.8364, 0.32345725556506855, 0.00082636875
+[openram.characterizer.elmore/get_lib_values]: 0.04, 0.052275, 0.3223545797838185, 0.000716101171875
+[openram.characterizer.elmore/get_lib_values]: 0.04, 0.2091, 0.3225751149400685, 0.0007381546875
+[openram.characterizer.elmore/get_lib_values]: 0.04, 0.8364, 0.32345725556506855, 0.00082636875
+[openram.characterizer.lib/characterize_corners]: Corner: ('TT', 1.1, 25)
+[openram.characterizer.lib/characterize_corners]: Writing to /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw_TT_1p1V_25C.lib
+[openram.characterizer.elmore/analytical_power]: Dynamic Power: 0.903593547952871 mW
+[openram.characterizer.elmore/analytical_power]: Leakage Power: 0.00438 mW
+[openram.characterizer.elmore/get_lib_values]: Slew, Load, Delay(ns), Slew(ns)
+[openram.characterizer.elmore/get_lib_values]: 0.00125, 0.052275, 0.2930496179852895, 0.000651001065340909
+[openram.characterizer.elmore/get_lib_values]: 0.00125, 0.2091, 0.2932501044909713, 0.0006710497159090909
+[openram.characterizer.elmore/get_lib_values]: 0.00125, 0.8364, 0.2940520505136986, 0.0007512443181818181
+[openram.characterizer.elmore/get_lib_values]: 0.005, 0.052275, 0.2930496179852895, 0.000651001065340909
+[openram.characterizer.elmore/get_lib_values]: 0.005, 0.2091, 0.2932501044909713, 0.0006710497159090909
+[openram.characterizer.elmore/get_lib_values]: 0.005, 0.8364, 0.2940520505136986, 0.0007512443181818181
+[openram.characterizer.elmore/get_lib_values]: 0.04, 0.052275, 0.2930496179852895, 0.000651001065340909
+[openram.characterizer.elmore/get_lib_values]: 0.04, 0.2091, 0.2932501044909713, 0.0006710497159090909
+[openram.characterizer.elmore/get_lib_values]: 0.04, 0.8364, 0.2940520505136986, 0.0007512443181818181
+[openram.characterizer.lib/characterize_corners]: Corner: ('SS', 1.0, 25)
+[openram.characterizer.lib/characterize_corners]: Writing to /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw_SS_1p0V_25C.lib
+[openram.characterizer.elmore/analytical_power]: Dynamic Power: 0.6788832065761613 mW
+[openram.characterizer.elmore/analytical_power]: Leakage Power: 0.00438 mW
+[openram.characterizer.elmore/get_lib_values]: Slew, Load, Delay(ns), Slew(ns)
+[openram.characterizer.elmore/get_lib_values]: 0.00125, 0.052275, 0.3545900377622004, 0.0007877112890625
+[openram.characterizer.elmore/get_lib_values]: 0.00125, 0.2091, 0.3548326264340753, 0.00081197015625
+[openram.characterizer.elmore/get_lib_values]: 0.00125, 0.8364, 0.3558029811215753, 0.000909005625
+[openram.characterizer.elmore/get_lib_values]: 0.005, 0.052275, 0.3545900377622004, 0.0007877112890625
+[openram.characterizer.elmore/get_lib_values]: 0.005, 0.2091, 0.3548326264340753, 0.00081197015625
+[openram.characterizer.elmore/get_lib_values]: 0.005, 0.8364, 0.3558029811215753, 0.000909005625
+[openram.characterizer.elmore/get_lib_values]: 0.04, 0.052275, 0.3545900377622004, 0.0007877112890625
+[openram.characterizer.elmore/get_lib_values]: 0.04, 0.2091, 0.3548326264340753, 0.00081197015625
+[openram.characterizer.elmore/get_lib_values]: 0.04, 0.8364, 0.3558029811215753, 0.000909005625
+[openram.characterizer.lib/characterize_corners]: Corner: ('FF', 1.0, 25)
+[openram.characterizer.lib/characterize_corners]: Writing to /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw_FF_1p0V_25C.lib
+[openram.characterizer.elmore/analytical_power]: Dynamic Power: 0.829746141370864 mW
+[openram.characterizer.elmore/analytical_power]: Leakage Power: 0.00438 mW
+[openram.characterizer.elmore/get_lib_values]: Slew, Load, Delay(ns), Slew(ns)
+[openram.characterizer.elmore/get_lib_values]: 0.00125, 0.052275, 0.29011912180543664, 0.0006444910546875
+[openram.characterizer.elmore/get_lib_values]: 0.00125, 0.2091, 0.2903176034460616, 0.00066433921875
+[openram.characterizer.elmore/get_lib_values]: 0.00125, 0.8364, 0.2911115300085616, 0.000743731875
+[openram.characterizer.elmore/get_lib_values]: 0.005, 0.052275, 0.29011912180543664, 0.0006444910546875
+[openram.characterizer.elmore/get_lib_values]: 0.005, 0.2091, 0.2903176034460616, 0.00066433921875
+[openram.characterizer.elmore/get_lib_values]: 0.005, 0.8364, 0.2911115300085616, 0.000743731875
+[openram.characterizer.elmore/get_lib_values]: 0.04, 0.052275, 0.29011912180543664, 0.0006444910546875
+[openram.characterizer.elmore/get_lib_values]: 0.04, 0.2091, 0.2903176034460616, 0.00066433921875
+[openram.characterizer.elmore/get_lib_values]: 0.04, 0.8364, 0.2911115300085616, 0.000743731875
+** Characterization: 0.9 seconds
+Config: Writing to /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.py
+** Config: 0.0 seconds
+Datasheet: Writing to /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.html
+** Datasheet: 0.0 seconds
+Verilog: Writing to /home/schmidpa/Desktop/ESES/09/assets/OpenRAM/SRAM_32x128_1rw/SRAM_32x128_1rw.v
+** Verilog: 0.0 seconds
+[openram.globals/purge_temp]: Purging temp directory: /tmp/openram_schmidpa_2030283_temp/
+** End: 262.1 seconds
