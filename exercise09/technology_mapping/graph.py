@@ -33,7 +33,7 @@ class OpType(Enum):
 
 # Node Attribute
 class Attr(NamedTuple):
-    """Attributes for a operation node of the DSES synthesis flow"""
+    """Attributes for an operation node of the DSES synthesis flow"""
 
     op_type: OpType
     exec_time: int
@@ -248,6 +248,10 @@ class DSESGraph:
             if v.scheduled_time < 0:
                 raise RuntimeError(f'Cannot schedule with ALAP goal "{goal}"')
 
+    def compute_Nv(self, v):
+        reversed_graph = self._GRAPH.reverse()
+        return set(nx.descendants(reversed_graph, v)).union({v})
+
     # Assign each node to a ressource
     def ressource_binding(self, hls_lib):
         # For simplicity reasons, our setup does not allow that multiple function units can execute the same operation type
@@ -390,10 +394,10 @@ class DSESGraph:
     def flow_map(self, K):
         import itertools
 
-        Nv = # TODO 
-        PI = # TODO
-        PO = # TODO
-        GATES = # TODO
+        Nv = {n: self.compute_Nv(n) for n in self._node_attributes.keys()}
+        PI = [n for n in self._node_attributes.keys() if self._GRAPH.in_degree(n) == 0]
+        PO = [n for n in self._node_attributes.keys() if self._GRAPH.out_degree(n) == 0]
+        GATES = [n for n in self._node_attributes.keys() if n not in PI and n not in PO]
 
         # Labels
         l = {n: 0 for n in self._node_attributes.keys() if self._GRAPH.in_degree(n) == 0}
@@ -479,7 +483,7 @@ class DSESGraph:
         import itertools
 
         # All predecessor nodes of node
-        Nv = # TODO
+        Nv = {n: self.compute_Nv(n) for n in self._node_attributes.keys()}
 
         # Enumerate all mappings
         node_mapping = dict()
@@ -544,104 +548,200 @@ class DSESGraph:
 
         return min_cover, total_size
 
+    def test_resource_binding(self):
+        self.asap()
+        HLS_LIB = list(
+            enumerate(
+                [
+                    [
+                        OpType.Constant,
+                    ],
+                    [
+                        OpType.Mult,
+                        OpType.Sub,
+                        OpType.Add,
+                    ],
+                    [
+                        OpType.Gt,
+                        OpType.Or,
+                        OpType.And,
+                        OpType.Nor,
+                        OpType.Nand,
+                    ],
+                ]
+            )
+        )
+        rb, k = self.ressource_binding(HLS_LIB)
+        print(f"Resource Binding (k = {k}) node mapping:")
+        for i, l in rb:
+            print(f"Function unit instance {i} computes nodes: {l}")
+        print()
+
+    def test_register_allocation(self):
+        ra = self.register_allocation()
+        print(f"Register Binding, requires {len(ra)} register, with edge mapping:")
+        for i, l in ra.items():
+            print(f"Register {i} stores values of edges: {l}")
+        print()
+
+    def test_tech_map(self, STDC_LIB):
+        tm, ts = self.tech_map(STDC_LIB)
+        print(f"\nTechnology mapping, has size of {ts}, with node mapping:")
+        for i, l in tm.items():
+            print(f"Node {i} matches subgraph (complex gate): {l[0]}. Covered nodes: {l[2].nodes}")
+        print()
+
 
 if __name__ == "__main__":
     # Graph Paper Flow Map
-    fmap = DSESGraph()
+    fmap1 = DSESGraph()
+    fmap2 = DSESGraph()
+    fmap3 = DSESGraph()
 
+
+    # Test case 1
     # PO
-    n0 = fmap.add_node(OpType.Or)
-    n1 = fmap.add_node(OpType.Nand)
+    n1_0 = fmap1.add_node(OpType.Or)
+    n1_1 = fmap1.add_node(OpType.Nand)
 
     # Inner
-    n2 = fmap.add_node(OpType.And, children=n0)
-    n3 = fmap.add_node(OpType.Or, children=n1)
-    n4 = fmap.add_node(OpType.And, children=n1)
-    n5 = fmap.add_node(OpType.Nor, children=[n2, n3])
-    n6 = fmap.add_node(OpType.Nand, children=[n5, n4])
-    n7 = fmap.add_node(OpType.And, children=n3)
-    n8 = fmap.add_node(OpType.Or, children=[n7, n6])
-    n9 = fmap.add_node(OpType.Nand, children=[n2, n6])
-    n10 = fmap.add_node(OpType.Nor, children=[n5, n8])
-    n11 = fmap.add_node(OpType.Nand, children=[n0, n8])
+    n1_2 = fmap1.add_node(OpType.And, children=n1_0)
+    n1_3 = fmap1.add_node(OpType.Or, children=n1_1)
+    n1_4 = fmap1.add_node(OpType.And, children=n1_1)
+    n1_5 = fmap1.add_node(OpType.Nor, children=[n1_2, n1_3])
+    n1_6 = fmap1.add_node(OpType.Nand, children=[n1_5, n1_4])
+    n1_7 = fmap1.add_node(OpType.And, children=n1_3)
+    n1_8 = fmap1.add_node(OpType.Or, children=[n1_7, n1_6])
+    n1_9 = fmap1.add_node(OpType.Nand, children=[n1_2, n1_6])
+    n1_10 = fmap1.add_node(OpType.Nor, children=[n1_5, n1_8])
+    n1_11 = fmap1.add_node(OpType.Nand, children=[n1_0, n1_8])
 
     # PI
-    n12 = fmap.add_node(OpType.Constant, children=n9)
-    n13 = fmap.add_node(OpType.Constant, children=n9)
-    n14 = fmap.add_node(OpType.Constant, children=n10)
-    n15 = fmap.add_node(OpType.Constant, children=[n10, n11])
-    n16 = fmap.add_node(OpType.Constant, children=n11)
-    n17 = fmap.add_node(OpType.Constant, children=[n4, n7])
+    n1_12 = fmap1.add_node(OpType.Constant, children=n1_9)
+    n1_13 = fmap1.add_node(OpType.Constant, children=n1_9)
+    n1_14 = fmap1.add_node(OpType.Constant, children=n1_10)
+    n1_15 = fmap1.add_node(OpType.Constant, children=[n1_10, n1_11])
+    n1_16 = fmap1.add_node(OpType.Constant, children=n1_11)
+    n1_17 = fmap1.add_node(OpType.Constant, children=[n1_4, n1_7])
+
+
+    # Test case 2
+    # PO
+    n2_0 = fmap2.add_node(OpType.And)
+    n2_1 = fmap2.add_node(OpType.Or)
+
+    # Inner
+    n2_2 = fmap2.add_node(OpType.Nand, children=n2_0)
+    n2_3 = fmap2.add_node(OpType.And, children=n2_1)
+    n2_4 = fmap2.add_node(OpType.Or, children=[n2_2, n2_3])
+    n2_5 = fmap2.add_node(OpType.Nand, children=n2_4)
+
+    # PI
+    n2_6 = fmap2.add_node(OpType.Constant, children=n2_0)
+    n2_7 = fmap2.add_node(OpType.Constant, children=n2_0)
+    n2_8 = fmap2.add_node(OpType.Constant, children=n2_1)
+    n2_9 = fmap2.add_node(OpType.Constant, children=n2_1)
+    n2_10 = fmap2.add_node(OpType.Constant, children=n2_2)
+    n2_11 = fmap2.add_node(OpType.Constant, children=n2_3)
+
+
+    # Test case 3
+    # PO
+    n3_0 = fmap3.add_node(OpType.Or)
+    n3_1 = fmap3.add_node(OpType.Nand)
+
+    # Inner
+    n3_2 = fmap3.add_node(OpType.And, children=[n3_0, n3_1])
+
+    # PI
+    n3_3 = fmap3.add_node(OpType.Constant, children=n3_2)
+    n3_4 = fmap3.add_node(OpType.Constant, children=n3_0)
+    n3_5 = fmap3.add_node(OpType.Constant, children=n3_1)
+
+
+
 
     # Show graph
-    fmap.graph_to_dot("unscheduled_graph")
+    fmap1.graph_to_dot("g1_unscheduled_graph")
+    fmap2.graph_to_dot("g2_unscheduled_graph")
+    fmap3.graph_to_dot("g3_unscheduled_graph")
 
     # Test asap
-    fmap.asap()
-    fmap.schedule_to_dot("asap")
+    fmap1.asap()
+    fmap2.asap()
+    fmap3.asap()
+    fmap1.schedule_to_dot("g1_asap")
+    fmap2.schedule_to_dot("g2_asap")
+    fmap3.schedule_to_dot("g3_asap")
 
     # Test Ressource Binding
     # Use asap schedule
-    fmap.asap()
-    HLS_LIB = list(
-        enumerate(
-            [
-                [
-                    OpType.Constant,
-                ],
-                [
-                    OpType.Mult,
-                    OpType.Sub,
-                    OpType.Add,
-                ],
-                [
-                    OpType.Gt,
-                    OpType.Or,
-                    OpType.And,
-                    OpType.Nor,
-                    OpType.Nand,
-                ],
-            ]
-        )
-    )
-    rb, k = fmap.ressource_binding(HLS_LIB)
-    print(f"Ressource Binding (k = {k}) node mapping:")
-    for i, l in rb:
-        print(f"Function unit instance {i} computes nodes: {l}")
-    print()
-    fmap.schedule_to_dot("binded")
+    fmap1.test_resource_binding()
+    fmap2.test_resource_binding()
+    fmap3.test_resource_binding()
+    fmap1.schedule_to_dot("g1_binded")
+    fmap2.schedule_to_dot("g2_binded")
+    fmap3.schedule_to_dot("g3_binded")
 
     # Test Register Allocation
-    ra = fmap.register_allocation()
-    print(f"Register Binding, requires {len(ra)} register, with edge mapping:")
-    for i, l in ra.items():
-        print(f"Register {i} stores values of edges: {l}")
-    print()
-    fmap.schedule_to_dot("binded_allocated")
+    fmap1.test_register_allocation()
+    fmap2.test_register_allocation()
+    fmap3.test_register_allocation()
+    fmap1.schedule_to_dot("g1_binded_allocated")
+    fmap2.schedule_to_dot("g2_binded_allocated")
+    fmap3.schedule_to_dot("g3_binded_allocated")
 
     # Test ALAP
-    fmap.alap(10)
-    fmap.schedule_to_dot("alap")
+    fmap1.alap(10)
+    fmap2.alap(10)
+    fmap3.alap(10)
+    fmap1.schedule_to_dot("g1_alap")
+    fmap2.schedule_to_dot("g2_alap")
+    fmap3.schedule_to_dot("g3_alap")
 
     # Test Flow Map
-    fmap.flow_map(3)
+    fmap1.flow_map(3)
+    fmap2.flow_map(3)
+    fmap3.flow_map(3)
 
-    # Graph DSES Lecture
-    tmap = DSESGraph()
-    n0 = tmap.add_node(OpType.Nand)
-    n1 = tmap.add_node(OpType.Nand, children=n0)
-    n2 = tmap.add_node(OpType.Invert, children=n1)
-    n3 = tmap.add_node(OpType.Nand, children=n1)
-    n4 = tmap.add_node(OpType.Invert, children=n3)
-    n5 = tmap.add_node(OpType.Nand, children=n3)
+    # Test Case 1
+    tmap1 = DSESGraph()
+    n4_0 = tmap1.add_node(OpType.Nand)
+    n4_1 = tmap1.add_node(OpType.Nand, children=n4_0)
+    n4_2 = tmap1.add_node(OpType.Invert, children=n4_1)
+    n4_3 = tmap1.add_node(OpType.Nand, children=n4_1)
+    n4_4 = tmap1.add_node(OpType.Invert, children=n4_3)
+    n4_5 = tmap1.add_node(OpType.Nand, children=n4_3)
 
-    n6 = tmap.add_node(OpType.Invert, children=n0)
-    n7 = tmap.add_node(OpType.Nand, children=n6)
-    n8 = tmap.add_node(OpType.Invert, children=n7)
-    n9 = tmap.add_node(OpType.Nand, children=n8)
+    n4_6 = tmap1.add_node(OpType.Invert, children=n4_0)
+    n4_7 = tmap1.add_node(OpType.Nand, children=n4_6)
+    n4_8 = tmap1.add_node(OpType.Invert, children=n4_7)
+    n4_9 = tmap1.add_node(OpType.Nand, children=n4_8)
+
+
+    # Test Case 2
+    tmap2 = DSESGraph()
+    n5_0 = tmap2.add_node(OpType.Nand)
+    n5_1 = tmap2.add_node(OpType.Nand, children=n5_0)
+    n5_2 = tmap2.add_node(OpType.Invert, children=n5_0)
+    n5_3 = tmap2.add_node(OpType.Invert, children=n5_1)
+    n5_4 = tmap2.add_node(OpType.Invert, children=n5_1)
+
+    # Test Case 3
+    tmap3 = DSESGraph()
+    n6_0 = tmap3.add_node(OpType.Invert)
+    n6_1 = tmap3.add_node(OpType.Nand, children=n6_0)
+    n6_2 = tmap3.add_node(OpType.Invert, children=n6_1)
+    n6_3 = tmap3.add_node(OpType.Invert, children=n6_2)
+    n6_4 = tmap3.add_node(OpType.Invert, children=n6_2)
+    n6_5 = tmap3.add_node(OpType.Nand, children=n6_3)
+    n6_6 = tmap3.add_node(OpType.Invert, children=n6_5)
+
 
     # Plot tree
-    tmap.graph_to_dot("min_tree_conver")
+    tmap1.graph_to_dot("g4_min_tree_conver")
+    tmap2.graph_to_dot("g5_min_tree_conver")
+    tmap3.graph_to_dot("g6_min_tree_conver")
 
     # Define STDC Lib
     # NAND2
@@ -679,8 +779,9 @@ if __name__ == "__main__":
     # Standard Cell Library
     STDC_LIB = [nand2, inv, and2, and3, nand3]
 
-    tm, ts = tmap.tech_map(STDC_LIB)
-    print(f"\nTechnology mapping, has size of {ts}, with node mapping:")
-    for i, l in tm.items():
-        print(f"Node {i} matches subgraph (complex gate): {l[0]}. Covered nodes: {l[2].nodes}")
-    print()
+    # Test Technology Mapping
+    tmap1.test_tech_map(STDC_LIB)
+    tmap2.test_tech_map(STDC_LIB)
+    tmap3.test_tech_map(STDC_LIB)
+
+
